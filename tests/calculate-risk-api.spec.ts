@@ -5,7 +5,8 @@ import { StatusCodes } from 'http-status-codes'
 test('Calculate risk score with correct data should receive code 200', async ({ request }) => {
   const requestBody = CalculateDto.createWithValidData()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',{
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
+    {
       data: requestBody,
     },
   )
@@ -27,7 +28,8 @@ test('Calculate risk score with correct data should receive code 200', async ({ 
 test('Calculate risk score with incorrect data should receive code 400', async ({ request }) => {
   const requestBody = CalculateDto.createWithInvalidData()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',{
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
+    {
       data: requestBody,
     },
   )
@@ -35,10 +37,10 @@ test('Calculate risk score with incorrect data should receive code 400', async (
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
 
-test('Calculate risk score with empty request body should receive code 400', async ({ request }) => {
-    const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
-  )
+test('Calculate risk score with empty request body should receive code 400', async ({
+  request,
+}) => {
+  const response = await request.post('https://backend.tallinn-learning.ee/api/loan-calc/decision')
   console.log('Status code:', response.status())
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
@@ -84,7 +86,7 @@ test('Calculate risk score with correct data "Medium Risk"', async ({ request })
 
   expect.soft(responseBody.riskLevel).toBe('Medium Risk')
   expect.soft(responseBody.riskScore).toBeDefined()
-  expect.soft(responseBody.riskPeriods).toEqual(expect.arrayContaining([6,9,12]))
+  expect.soft(responseBody.riskPeriods).toEqual(expect.arrayContaining([6, 9, 12]))
   expect.soft(responseBody.applicationId).toBeDefined()
   expect.soft(responseBody.riskDecision).toBeDefined()
 })
@@ -106,7 +108,7 @@ test('Calculate risk score with correct data "Low Risk"', async ({ request }) =>
 
   expect.soft(responseBody.riskLevel).toBe('Low Risk')
   expect.soft(responseBody.riskScore).toBeDefined()
-  expect.soft(responseBody.riskPeriods).toEqual(expect.arrayContaining([12, 18, 24,30,36]))
+  expect.soft(responseBody.riskPeriods).toEqual(expect.arrayContaining([12, 18, 24, 30, 36]))
   expect.soft(responseBody.applicationId).toBeDefined()
   expect.soft(responseBody.riskDecision).toBeDefined()
 })
