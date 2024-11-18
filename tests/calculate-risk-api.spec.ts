@@ -5,8 +5,7 @@ import { StatusCodes } from 'http-status-codes'
 test('Calculate risk score with correct data should receive code 200', async ({ request }) => {
   const requestBody = CalculateDto.createWithValidData()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
-    {
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',{
       data: requestBody,
     },
   )
@@ -23,17 +22,14 @@ test('Calculate risk score with correct data should receive code 200', async ({ 
 test('Calculate risk score with incorrect data should receive code 400', async ({ request }) => {
   const requestBody = CalculateDto.createWithInvalidData()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
-    {
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',{
       data: requestBody,
     },
   )
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
 
-test('Calculate risk score with empty request body should receive code 400', async ({
-  request,
-}) => {
+test('Calculate risk score with empty request body should receive code 400', async ({ request, }) => {
   const response = await request.post('https://backend.tallinn-learning.ee/api/loan-calc/decision')
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
@@ -41,8 +37,7 @@ test('Calculate risk score with empty request body should receive code 400', asy
 test('Calculate risk score with correct data "High Risk"', async ({ request }) => {
   const requestBody = CalculateDto.createWithValidDataHighRisk()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
-    {
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',{
       data: requestBody,
     },
   )
@@ -58,8 +53,7 @@ test('Calculate risk score with correct data "High Risk"', async ({ request }) =
 test('Calculate risk score with correct data "Medium Risk"', async ({ request }) => {
   const requestBody = CalculateDto.createWithValidDataMediumRisk()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
-    {
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',{
       data: requestBody,
     },
   )
@@ -75,8 +69,7 @@ test('Calculate risk score with correct data "Medium Risk"', async ({ request })
 test('Calculate risk score with correct data "Low Risk"', async ({ request }) => {
   const requestBody = CalculateDto.createWithValidDataLowRisk()
   const response = await request.post(
-    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
-    {
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision', {
       data: requestBody,
     },
   )
