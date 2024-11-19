@@ -45,7 +45,36 @@ export class CalculateDto {
     return new CalculateDto(1000, 50, Math.floor(Math.random() * 70) + 17, true, 200, 12)
   }
 
-  static createWithInvalidData(): CalculateDto {
-    return new CalculateDto(-100, -50, Math.floor(Math.random() * 16), false, -500, 60) // Некорректные значения
+  static createWithInvalidIncome(): CalculateDto {
+    return new CalculateDto(
+      -100,
+      Math.floor(Math.random() * 100 + 1),
+      Math.floor(Math.random() * 70) + 17,
+      true,
+      Math.floor(Math.random() * 100 + 1),
+      Math.floor(Math.random() * (36 - 3 + 1) + 3),
+    )
+  }
+
+  static createWithInvalidDebt(): CalculateDto {
+    return new CalculateDto(
+      Math.floor(Math.random() * 1000 + 100),
+      -5,
+      Math.floor(Math.random() * 70) + 17,
+      true,
+      Math.floor(Math.random() * 100 + 1),
+      Math.floor(Math.random() * (36 - 3 + 1) + 3),
+    )
+  }
+
+  static createWithInvalidAge(): CalculateDto {
+    return new CalculateDto(
+      Math.floor(Math.random() * 1000 + 100),
+      Math.floor(Math.random() * 100 + 1),
+      0,
+      true,
+      Math.floor(Math.random() * 100 + 1),
+      Math.floor(Math.random() * (36 - 3 + 1) + 3),
+    )
   }
 }

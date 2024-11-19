@@ -20,8 +20,34 @@ test('Calculate risk score with correct data should receive code 200', async ({ 
   expect.soft(responseBody.riskDecision).toBeDefined()
 })
 
-test('Calculate risk score with incorrect data should receive code 400', async ({ request }) => {
-  const requestBody = CalculateDto.createWithInvalidData()
+test('Calculate risk score with incorrect income data should receive code 400', async ({
+  request,
+}) => {
+  const requestBody = CalculateDto.createWithInvalidIncome()
+  const response = await request.post(
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
+    {
+      data: requestBody,
+    },
+  )
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('Send call with incorrect debt should receive code 400', async ({ request }) => {
+  const requestBody = CalculateDto.createWithInvalidDebt()
+  const response = await request.post(
+    'https://backend.tallinn-learning.ee/api/loan-calc/decision',
+    {
+      data: requestBody,
+    },
+  )
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('Send call with incorrect age boundary value, should receive code 400', async ({
+  request,
+}) => {
+  const requestBody = CalculateDto.createWithInvalidAge()
   const response = await request.post(
     'https://backend.tallinn-learning.ee/api/loan-calc/decision',
     {
