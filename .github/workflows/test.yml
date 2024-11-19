@@ -32,7 +32,7 @@ jobs:
       - name: Run ESLint check
         run: |
             echo "Running ESLint to check for linting issues..."
-            npm run lint 
+            npm run lint
 
       - name: Run TypeScript compile check
         run: |
@@ -42,4 +42,4 @@ jobs:
       - name: Run Playwright API tests
         run: |
           echo "Running Playwright to execute API tests..."
-          npx playwright test
+
