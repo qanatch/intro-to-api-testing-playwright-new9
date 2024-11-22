@@ -15,11 +15,7 @@ test.describe('Tallinn delivery API tests', () => {
     const responseBody = await response.text()
     expect.soft(response.status()).toBe(StatusCodes.OK)
     expect.soft(responseBody).toMatch(jwt)
-    console.log('response body:', await response.text())
-    console.log('Request URL:', `${serviceURL}${loginPath}`)
-    console.log('Request Body:', requestBody)
-    console.log('Response Status:', response.status())
-    console.log('Response Body:', responseBody)
+
   })
 
   test('login with incorrect data', async ({ request }) => {
