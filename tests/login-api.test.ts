@@ -6,7 +6,6 @@ const serviceURL = 'https://backend.tallinn-learning.ee/'
 const loginPath = 'login/student'
 const jwt = /^eyJhb[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/
 
-
 test.describe('Tallinn delivery API tests', () => {
   test('login with correct data', async ({ request }) => {
     const requestBody = LoginDto.createLoginWithCorrectData()
@@ -17,7 +16,6 @@ test.describe('Tallinn delivery API tests', () => {
     expect(response.status()).toBe(StatusCodes.OK)
     expect(responseBody).toMatch(jwt)
     console.log('response body:', await response.text())
-
   })
 
   test('login with incorrect data', async ({ request }) => {
