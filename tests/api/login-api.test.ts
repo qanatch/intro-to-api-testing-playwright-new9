@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { LoginDto } from './dto/LoginDto'
+import { LoginDto } from '../dto/login-dto'
 import { StatusCodes } from 'http-status-codes'
 
 const serviceURL = 'https://backend.tallinn-learning.ee/'
@@ -15,7 +15,6 @@ test.describe('Tallinn delivery API tests', () => {
     const responseBody = await response.text()
     expect.soft(response.status()).toBe(StatusCodes.OK)
     expect.soft(responseBody).toMatch(jwt)
-
   })
 
   test('login with incorrect data', async ({ request }) => {
